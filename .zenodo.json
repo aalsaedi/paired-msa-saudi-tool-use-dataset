@@ -1,0 +1,21 @@
+{
+  "title": "Paired MSA-Saudi Arabic Tool-Use Test Set",
+  "upload_type": "dataset",
+  "description": "A controlled test set containing 150 records in 75 meaning-matched Modern Standard Arabic and Saudi Arabic pairs, with deterministic fixtures, answer contracts, schemas, and checksums.",
+  "creators": [
+    {
+      "name": "Anonymous Dataset Authors"
+    }
+  ],
+  "license": "cc-by-4.0",
+  "version": "1.0.3",
+  "language": "ara",
+  "keywords": [
+    "Arabic",
+    "Saudi Arabic",
+    "Modern Standard Arabic",
+    "tool calling",
+    "function calling",
+    "benchmark"
+  ]
+}

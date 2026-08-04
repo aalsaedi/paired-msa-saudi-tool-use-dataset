@@ -1,0 +1,466 @@
+{
+  "registry_version": "1.0.0",
+  "display_language": "en",
+  "tool_names_and_argument_keys_language": "en",
+  "execution_policy": "deterministic_mock",
+  "side_effect_policy": "read_only",
+  "reference_context": {
+    "timezone": "Asia/Riyadh",
+    "currency_rate_snapshot": "2026-07-23",
+    "supported_cities": [
+      "Riyadh",
+      "Jeddah",
+      "Makkah",
+      "Madinah",
+      "Taif",
+      "Dammam",
+      "Abha"
+    ]
+  },
+  "tools": [
+    {
+      "name": "get_weather",
+      "domain": "weather",
+      "description": "Return a deterministic weather forecast for a supported Saudi city and an ISO calendar date. Use this for temperature and weather conditions, not air quality.",
+      "side_effects": "none",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "city",
+          "date"
+        ],
+        "properties": {
+          "city": {
+            "type": "string",
+            "enum": [
+              "Riyadh",
+              "Jeddah",
+              "Makkah",
+              "Madinah",
+              "Taif",
+              "Dammam",
+              "Abha"
+            ],
+            "description": "Canonical English city label."
+          },
+          "date": {
+            "type": "string",
+            "format": "date",
+            "description": "Gregorian date in YYYY-MM-DD format, resolved against the record reference datetime."
+          }
+        }
+      },
+      "output_schema": {
+        "type": "object",
+        "required": [
+          "city",
+          "date",
+          "condition",
+          "high_c",
+          "low_c"
+        ],
+        "properties": {
+          "city": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          },
+          "condition": {
+            "type": "string"
+          },
+          "high_c": {
+            "type": "number"
+          },
+          "low_c": {
+            "type": "number"
+          }
+        }
+      },
+      "normalization": {
+        "city": "Arabic and English aliases map to the canonical enum.",
+        "date": "Arabic-Indic digits and relative dates resolve to ISO using context.reference_datetime."
+      },
+      "boundary": {
+        "in_scope": [
+          "weather condition",
+          "high and low temperature"
+        ],
+        "out_of_scope": [
+          "air quality",
+          "historical climate",
+          "cities outside the supported list"
+        ]
+      }
+    },
+    {
+      "name": "get_air_quality",
+      "domain": "environment",
+      "description": "Return a deterministic air-quality index for a supported Saudi city and an ISO calendar date. Use this for pollution and AQI, not weather conditions.",
+      "side_effects": "none",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "city",
+          "date"
+        ],
+        "properties": {
+          "city": {
+            "type": "string",
+            "enum": [
+              "Riyadh",
+              "Jeddah",
+              "Makkah",
+              "Madinah",
+              "Taif",
+              "Dammam",
+              "Abha"
+            ],
+            "description": "Canonical English city label."
+          },
+          "date": {
+            "type": "string",
+            "format": "date",
+            "description": "Gregorian date in YYYY-MM-DD format, resolved against the record reference datetime."
+          }
+        }
+      },
+      "output_schema": {
+        "type": "object",
+        "required": [
+          "city",
+          "date",
+          "aqi",
+          "category",
+          "dominant_pollutant"
+        ],
+        "properties": {
+          "city": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          },
+          "aqi": {
+            "type": "integer"
+          },
+          "category": {
+            "type": "string"
+          },
+          "dominant_pollutant": {
+            "type": "string"
+          }
+        }
+      },
+      "normalization": {
+        "city": "Arabic and English aliases map to the canonical enum.",
+        "date": "Arabic-Indic digits and relative dates resolve to ISO using context.reference_datetime."
+      },
+      "boundary": {
+        "in_scope": [
+          "AQI",
+          "pollution category",
+          "dominant pollutant"
+        ],
+        "out_of_scope": [
+          "temperature",
+          "rain",
+          "medical advice"
+        ]
+      }
+    },
+    {
+      "name": "search_intercity_trips",
+      "domain": "travel",
+      "description": "Search deterministic mock intercity trips between supported Saudi cities for a date and transport mode. Use this to find departures and prices, not to estimate generic travel duration.",
+      "side_effects": "none",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "origin_city",
+          "destination_city",
+          "travel_date",
+          "transport_mode"
+        ],
+        "properties": {
+          "origin_city": {
+            "type": "string",
+            "enum": [
+              "Riyadh",
+              "Jeddah",
+              "Makkah",
+              "Madinah",
+              "Taif",
+              "Dammam",
+              "Abha"
+            ],
+            "description": "Canonical English origin city."
+          },
+          "destination_city": {
+            "type": "string",
+            "enum": [
+              "Riyadh",
+              "Jeddah",
+              "Makkah",
+              "Madinah",
+              "Taif",
+              "Dammam",
+              "Abha"
+            ],
+            "description": "Canonical English destination city."
+          },
+          "travel_date": {
+            "type": "string",
+            "format": "date",
+            "description": "Gregorian date in YYYY-MM-DD format."
+          },
+          "transport_mode": {
+            "type": "string",
+            "enum": [
+              "train",
+              "bus",
+              "flight"
+            ],
+            "description": "Requested transport mode."
+          }
+        }
+      },
+      "output_schema": {
+        "type": "object",
+        "required": [
+          "origin_city",
+          "destination_city",
+          "travel_date",
+          "transport_mode",
+          "trips"
+        ],
+        "properties": {
+          "origin_city": {
+            "type": "string"
+          },
+          "destination_city": {
+            "type": "string"
+          },
+          "travel_date": {
+            "type": "string"
+          },
+          "transport_mode": {
+            "type": "string"
+          },
+          "trips": {
+            "type": "array"
+          }
+        }
+      },
+      "normalization": {
+        "origin_city": "Arabic and English aliases map to the canonical enum.",
+        "destination_city": "Arabic and English aliases map to the canonical enum.",
+        "travel_date": "Arabic-Indic digits and relative dates resolve to ISO using context.reference_datetime.",
+        "transport_mode": "Arabic expressions map to train, bus, or flight."
+      },
+      "boundary": {
+        "in_scope": [
+          "available mock departures",
+          "departure and arrival time",
+          "mock ticket price"
+        ],
+        "out_of_scope": [
+          "booking or purchasing",
+          "generic road duration",
+          "routes outside the supported cities"
+        ]
+      }
+    },
+    {
+      "name": "estimate_trip_duration",
+      "domain": "travel",
+      "description": "Return a deterministic estimated duration and distance between two supported Saudi cities for a transport mode. Use this for generic duration, not to search scheduled departures or prices.",
+      "side_effects": "none",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "origin_city",
+          "destination_city",
+          "transport_mode"
+        ],
+        "properties": {
+          "origin_city": {
+            "type": "string",
+            "enum": [
+              "Riyadh",
+              "Jeddah",
+              "Makkah",
+              "Madinah",
+              "Taif",
+              "Dammam",
+              "Abha"
+            ],
+            "description": "Canonical English origin city."
+          },
+          "destination_city": {
+            "type": "string",
+            "enum": [
+              "Riyadh",
+              "Jeddah",
+              "Makkah",
+              "Madinah",
+              "Taif",
+              "Dammam",
+              "Abha"
+            ],
+            "description": "Canonical English destination city."
+          },
+          "transport_mode": {
+            "type": "string",
+            "enum": [
+              "car",
+              "train",
+              "bus",
+              "flight"
+            ],
+            "description": "Requested transport mode."
+          }
+        }
+      },
+      "output_schema": {
+        "type": "object",
+        "required": [
+          "origin_city",
+          "destination_city",
+          "transport_mode",
+          "duration_minutes",
+          "distance_km"
+        ],
+        "properties": {
+          "origin_city": {
+            "type": "string"
+          },
+          "destination_city": {
+            "type": "string"
+          },
+          "transport_mode": {
+            "type": "string"
+          },
+          "duration_minutes": {
+            "type": "integer"
+          },
+          "distance_km": {
+            "type": "integer"
+          }
+        }
+      },
+      "normalization": {
+        "origin_city": "Arabic and English aliases map to the canonical enum.",
+        "destination_city": "Arabic and English aliases map to the canonical enum.",
+        "transport_mode": "Arabic expressions map to car, train, bus, or flight."
+      },
+      "boundary": {
+        "in_scope": [
+          "generic duration",
+          "distance"
+        ],
+        "out_of_scope": [
+          "scheduled departures",
+          "ticket prices",
+          "traffic prediction",
+          "booking"
+        ]
+      }
+    },
+    {
+      "name": "convert_currency",
+      "domain": "finance",
+      "description": "Convert an amount between supported currencies using a fixed mock exchange-rate snapshot. Use this for currency conversion, not financial advice or live market rates.",
+      "side_effects": "none",
+      "input_schema": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "amount",
+          "from_currency",
+          "to_currency"
+        ],
+        "properties": {
+          "amount": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Non-negative monetary amount."
+          },
+          "from_currency": {
+            "type": "string",
+            "enum": [
+              "SAR",
+              "USD",
+              "EUR",
+              "GBP",
+              "AED"
+            ],
+            "description": "ISO source currency."
+          },
+          "to_currency": {
+            "type": "string",
+            "enum": [
+              "SAR",
+              "USD",
+              "EUR",
+              "GBP",
+              "AED"
+            ],
+            "description": "ISO target currency."
+          }
+        }
+      },
+      "output_schema": {
+        "type": "object",
+        "required": [
+          "amount",
+          "from_currency",
+          "to_currency",
+          "converted_amount",
+          "rate",
+          "rate_snapshot"
+        ],
+        "properties": {
+          "amount": {
+            "type": "number"
+          },
+          "from_currency": {
+            "type": "string"
+          },
+          "to_currency": {
+            "type": "string"
+          },
+          "converted_amount": {
+            "type": "number"
+          },
+          "rate": {
+            "type": "number"
+          },
+          "rate_snapshot": {
+            "type": "string"
+          }
+        }
+      },
+      "normalization": {
+        "amount": "Arabic-Indic digits and Arabic number words normalize to a numeric value.",
+        "from_currency": "Arabic currency names and common English aliases map to ISO codes.",
+        "to_currency": "Arabic currency names and common English aliases map to ISO codes."
+      },
+      "boundary": {
+        "in_scope": [
+          "mock conversion among SAR, USD, EUR, GBP, and AED"
+        ],
+        "out_of_scope": [
+          "live exchange rates",
+          "investment advice",
+          "fees or remittance execution",
+          "unsupported currencies"
+        ]
+      }
+    }
+  ]
+}

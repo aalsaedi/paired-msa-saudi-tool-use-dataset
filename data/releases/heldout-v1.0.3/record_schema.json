@@ -1,0 +1,195 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Paired MSA-Saudi Arabic tool-use record",
+  "description": "Schema for one language-variety realization of a paired semantic scenario.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "registry_version",
+    "scenario_id",
+    "pair_id",
+    "variant_id",
+    "split",
+    "language",
+    "variety",
+    "user_request",
+    "context",
+    "available_tools",
+    "case_type",
+    "difficulty",
+    "phenomena",
+    "expected"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.2.0"
+    },
+    "registry_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "scenario_id": {
+      "type": "string",
+      "pattern": "^scn_[0-9]{4,}$"
+    },
+    "pair_id": {
+      "type": "string",
+      "pattern": "^pair_[0-9]{4,}$"
+    },
+    "variant_id": {
+      "type": "string",
+      "pattern": "^pair_[0-9]{4,}_(msa|saudi_general)$"
+    },
+    "split": {
+      "type": "string",
+      "enum": [
+        "pilot",
+        "train",
+        "validation",
+        "test"
+      ]
+    },
+    "language": {
+      "const": "ar"
+    },
+    "variety": {
+      "type": "string",
+      "enum": [
+        "msa",
+        "saudi_general"
+      ]
+    },
+    "user_request": {
+      "type": "string",
+      "minLength": 1
+    },
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reference_datetime",
+        "timezone"
+      ],
+      "properties": {
+        "reference_datetime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "timezone": {
+          "const": "Asia/Riyadh"
+        }
+      }
+    },
+    "available_tools": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "case_type": {
+      "type": "string",
+      "enum": [
+        "valid_call",
+        "no_tool_needed",
+        "tool_unavailable",
+        "missing_required_argument",
+        "confusable_tools"
+      ]
+    },
+    "difficulty": {
+      "type": "string",
+      "enum": [
+        "simple",
+        "compositional",
+        "adversarial"
+      ]
+    },
+    "phenomena": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "arabic_indic_digits",
+          "western_digits",
+          "number_words",
+          "relative_date",
+          "explicit_date",
+          "city_alias",
+          "transliteration",
+          "code_switching",
+          "origin_destination",
+          "currency_alias",
+          "lexical_choice",
+          "tool_confusion",
+          "missing_information",
+          "unsupported_request",
+          "no_tool_chitchat"
+        ]
+      }
+    },
+    "expected": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "action",
+        "tool_name",
+        "gold_call",
+        "missing_required_arguments",
+        "clarification_targets",
+        "execution",
+        "response_language"
+      ],
+      "properties": {
+        "action": {
+          "type": "string",
+          "enum": [
+            "call_tool",
+            "ask_clarification",
+            "answer_without_tool",
+            "report_unsupported"
+          ]
+        },
+        "tool_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "gold_call": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "missing_required_arguments": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "clarification_targets": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "execution": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "response_language": {
+          "const": "ar"
+        }
+      }
+    }
+  }
+}

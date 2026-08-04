@@ -1,0 +1,485 @@
+{
+  "contract_version": "1.0.0-candidate",
+  "batch_id": "heldout_75_approved_v1",
+  "status": "human_technical_approved",
+  "design_origin": "mechanically_derived_from_candidate_fixtures",
+  "purpose": "Define minimum grounded answer facts and forbidden claims for the 30 executable held-out candidate pairs.",
+  "currency_display_policy_reference": "data/validation/final/batch_01_answer_contracts.json",
+  "contracts": [
+    {
+      "slot_id": "scaled_slot_003",
+      "pair_id": "pair_0203",
+      "fixture_id": "test_pair_0203_get_air_quality",
+      "required_answer_facts": [
+        "aqi=42",
+        "category=good",
+        "dominant_pollutant=PM2.5"
+      ],
+      "forbidden_answer_claims": [
+        "temperature",
+        "medical diagnosis",
+        "live sensor observation"
+      ]
+    },
+    {
+      "slot_id": "scaled_slot_004",
+      "pair_id": "pair_0204",
+      "fixture_id": "test_pair_0204_estimate_trip_duration",
+      "required_answer_facts": [
+        "duration_minutes=182",
+        "distance_km=243"
+      ],
+      "forbidden_answer_claims": [
+        "scheduled departure",
+        "ticket price",
+        "guaranteed arrival time",
+        "live traffic condition"
+      ]
+    },
+    {
+      "slot_id": "scaled_slot_006",
+      "pair_id": "pair_0206",
+      "fixture_id": "test_pair_0206_get_air_quality",
+      "required_answer_facts": [
+        "aqi=58",
+        "category=moderate",
+        "dominant_pollutant=PM10"
+      ],
+      "forbidden_answer_claims": [
+        "temperature",
+        "medical diagnosis",
+        "live sensor observation"
+      ]
+    },
+    {
+      "slot_id": "scaled_slot_009",
+      "pair_id": "pair_0209",
+      "fixture_id": "test_pair_0209_get_air_quality",
+      "required_answer_facts": [
+        "aqi=73",
+        "category=moderate",
+        "dominant_pollutant=O3"
+      ],
+      "forbidden_answer_claims": [
+        "temperature",
+        "medical diagnosis",
+        "live sensor observation"
+      ]
+    },
+    {
+      "slot_id": "scaled_slot_013",
+      "pair_id": "pair_0213",
+      "fixture_id": "test_pair_0213_estimate_trip_duration",
+      "required_answer_facts": [
+        "duration_minutes=174",
+        "distance_km=316"
+      ],
+      "forbidden_answer_claims": [
+        "scheduled departure",
+        "ticket price",
+        "guaranteed arrival time",
+        "live traffic condition"
+      ]
+    },
+    {
+      "slot_id": "scaled_slot_015",
+      "pair_id": "pair_0215",
+      "fixture_id": "test_pair_0215_search_intercity_trips",
+      "required_answer_facts": [
+        "trip[0].departure_time=06:15",
+        "trip[0].price_sar=125",
+        "trip[1].departure_time=13:40",
+        "trip[1].price_sar=113"
+      ],
+      "forbidden_answer_claims": [
+        "live availability",
+        "booking confirmation",
+        "generic duration estimate"
+      ]
+    },
+    {
+      "slot_id": "scaled_slot_018",
+      "pair_id": "pair_0218",
+      "fixture_id": "test_pair_0218_convert_currency",
+      "required_answer_facts": [
+        "converted_amount=67.38",
+        "rate=0.245",
+        "rate_snapshot=2026-07-23"
+      ],
+      "forbidden_answer_claims": [
+        "live exchange rate",
+        "transaction completion",
+        "financial advice"
+      ]
+    },
+    {
+      "slot_id": "scaled_slot_021",
+      "pair_id": "pair_0221",
+      "fixture_id": "test_pair_0221_estimate_trip_duration",
+      "required_answer_facts": [
+        "duration_minutes=214",
+        "distance_km=389"
+      ],
+      "forbidden_answer_claims": [
+        "scheduled departure",
+        "ticket price",
+        "guaranteed arrival time",
+        "live traffic condition"
+      ]
+    },
+    {
+      "slot_id": "scaled_slot_026",
+      "pair_id": "pair_0226",
+      "fixture_id": "test_pair_0226_get_weather",
+      "required_answer_facts": [
+        "condition=partly_cloudy",
+        "high_c=35",
+        "low_c=26"
+      ],
+      "forbidden_answer_claims": [
+        "live observation",
+        "air quality",
+        "medical advice"
+      ]
+    },
+    {
+      "slot_id": "scaled_slot_027",
+      "pair_id": "pair_0227",
+      "fixture_id": "test_pair_0227_convert_currency",
+      "required_answer_facts": [
+        "converted_amount=653.44",
+        "rate=1.021",
+        "rate_snapshot=2026-07-23"
+      ],
+      "forbidden_answer_claims": [
+        "live exchange rate",
+        "transaction completion",
+        "financial advice"
+      ]
+    },
+    {
+      "slot_id": "scaled_slot_028",
+      "pair_id": "pair_0228",
+      "fixture_id": "test_pair_0228_estimate_trip_duration",
+      "required_answer_facts": [
+        "duration_minutes=254",
+        "distance_km=462"
+      ],
+      "forbidden_answer_claims": [
+        "scheduled departure",
+        "ticket price",
+        "guaranteed arrival time",
+        "live traffic condition"
+      ]
+    },
+    {
+      "slot_id": "scaled_slot_035",
+      "pair_id": "pair_0235",
+      "fixture_id": "test_pair_0235_search_intercity_trips",
+      "required_answer_facts": [
+        "trip[0].departure_time=07:15",
+        "trip[0].price_sar=185",
+        "trip[1].departure_time=14:40",
+        "trip[1].price_sar=173"
+      ],
+      "forbidden_answer_claims": [
+        "live availability",
+        "booking confirmation",
+        "generic duration estimate"
+      ]
+    },
+    {
+      "slot_id": "scaled_slot_036",
+      "pair_id": "pair_0236",
+      "fixture_id": "test_pair_0236_get_air_quality",
+      "required_answer_facts": [
+        "aqi=104",
+        "category=unhealthy_for_sensitive_groups",
+        "dominant_pollutant=PM2.5"
+      ],
+      "forbidden_answer_claims": [
+        "temperature",
+        "medical diagnosis",
+        "live sensor observation"
+      ]
+    },
+    {
+      "slot_id": "scaled_slot_038",
+      "pair_id": "pair_0238",
+      "fixture_id": "test_pair_0238_get_weather",
+      "required_answer_facts": [
+        "condition=light_rain",
+        "high_c=37",
+        "low_c=28"
+      ],
+      "forbidden_answer_claims": [
+        "live observation",
+        "air quality",
+        "medical advice"
+      ]
+    },
+    {
+      "slot_id": "scaled_slot_045",
+      "pair_id": "pair_0245",
+      "fixture_id": "test_pair_0245_get_air_quality",
+      "required_answer_facts": [
+        "aqi=119",
+        "category=unhealthy_for_sensitive_groups",
+        "dominant_pollutant=PM10"
+      ],
+      "forbidden_answer_claims": [
+        "temperature",
+        "medical diagnosis",
+        "live sensor observation"
+      ]
+    },
+    {
+      "slot_id": "scaled_slot_047",
+      "pair_id": "pair_0247",
+      "fixture_id": "test_pair_0247_search_intercity_trips",
+      "required_answer_facts": [
+        "trip[0].departure_time=08:15",
+        "trip[0].price_sar=221",
+        "trip[1].departure_time=15:40",
+        "trip[1].price_sar=209"
+      ],
+      "forbidden_answer_claims": [
+        "live availability",
+        "booking confirmation",
+        "generic duration estimate"
+      ]
+    },
+    {
+      "slot_id": "scaled_slot_051",
+      "pair_id": "pair_0251",
+      "fixture_id": "test_pair_0251_search_intercity_trips",
+      "required_answer_facts": [
+        "trip[0].departure_time=09:15",
+        "trip[0].price_sar=233",
+        "trip[1].departure_time=16:40",
+        "trip[1].price_sar=221"
+      ],
+      "forbidden_answer_claims": [
+        "live availability",
+        "booking confirmation",
+        "generic duration estimate"
+      ]
+    },
+    {
+      "slot_id": "scaled_slot_053",
+      "pair_id": "pair_0253",
+      "fixture_id": "test_pair_0253_get_weather",
+      "required_answer_facts": [
+        "condition=clear",
+        "high_c=32",
+        "low_c=23"
+      ],
+      "forbidden_answer_claims": [
+        "live observation",
+        "air quality",
+        "medical advice"
+      ]
+    },
+    {
+      "slot_id": "scaled_slot_058",
+      "pair_id": "pair_0258",
+      "fixture_id": "test_pair_0258_get_weather",
+      "required_answer_facts": [
+        "condition=partly_cloudy",
+        "high_c=37",
+        "low_c=28"
+      ],
+      "forbidden_answer_claims": [
+        "live observation",
+        "air quality",
+        "medical advice"
+      ]
+    },
+    {
+      "slot_id": "scaled_slot_061",
+      "pair_id": "pair_0261",
+      "fixture_id": "test_pair_0261_search_intercity_trips",
+      "required_answer_facts": [
+        "trip[0].departure_time=07:15",
+        "trip[0].price_sar=263",
+        "trip[1].departure_time=14:40",
+        "trip[1].price_sar=251"
+      ],
+      "forbidden_answer_claims": [
+        "live availability",
+        "booking confirmation",
+        "generic duration estimate"
+      ]
+    },
+    {
+      "slot_id": "scaled_slot_070",
+      "pair_id": "pair_0270",
+      "fixture_id": "test_pair_0270_estimate_trip_duration",
+      "required_answer_facts": [
+        "duration_minutes=375",
+        "distance_km=681"
+      ],
+      "forbidden_answer_claims": [
+        "scheduled departure",
+        "ticket price",
+        "guaranteed arrival time",
+        "live traffic condition"
+      ]
+    },
+    {
+      "slot_id": "scaled_slot_071",
+      "pair_id": "pair_0271",
+      "fixture_id": "test_pair_0271_get_weather",
+      "required_answer_facts": [
+        "condition=light_rain",
+        "high_c=30",
+        "low_c=21"
+      ],
+      "forbidden_answer_claims": [
+        "live observation",
+        "air quality",
+        "medical advice"
+      ]
+    },
+    {
+      "slot_id": "scaled_slot_073",
+      "pair_id": "pair_0273",
+      "fixture_id": "test_pair_0273_get_weather",
+      "required_answer_facts": [
+        "condition=clear",
+        "high_c=32",
+        "low_c=23"
+      ],
+      "forbidden_answer_claims": [
+        "live observation",
+        "air quality",
+        "medical advice"
+      ]
+    },
+    {
+      "slot_id": "scaled_slot_076",
+      "pair_id": "pair_0276",
+      "fixture_id": "test_pair_0276_search_intercity_trips",
+      "required_answer_facts": [
+        "trip[0].departure_time=09:15",
+        "trip[0].price_sar=308",
+        "trip[1].departure_time=16:40",
+        "trip[1].price_sar=296"
+      ],
+      "forbidden_answer_claims": [
+        "live availability",
+        "booking confirmation",
+        "generic duration estimate"
+      ]
+    },
+    {
+      "slot_id": "scaled_slot_080",
+      "pair_id": "pair_0280",
+      "fixture_id": "test_pair_0280_estimate_trip_duration",
+      "required_answer_facts": [
+        "duration_minutes=566",
+        "distance_km=754"
+      ],
+      "forbidden_answer_claims": [
+        "scheduled departure",
+        "ticket price",
+        "guaranteed arrival time",
+        "live traffic condition"
+      ]
+    },
+    {
+      "slot_id": "scaled_slot_081",
+      "pair_id": "pair_0281",
+      "fixture_id": "test_pair_0281_get_weather",
+      "required_answer_facts": [
+        "condition=partly_cloudy",
+        "high_c=30",
+        "low_c=21"
+      ],
+      "forbidden_answer_claims": [
+        "live observation",
+        "air quality",
+        "medical advice"
+      ]
+    },
+    {
+      "slot_id": "scaled_slot_082",
+      "pair_id": "pair_0282",
+      "fixture_id": "test_pair_0282_estimate_trip_duration",
+      "required_answer_facts": [
+        "duration_minutes=455",
+        "distance_km=827"
+      ],
+      "forbidden_answer_claims": [
+        "scheduled departure",
+        "ticket price",
+        "guaranteed arrival time",
+        "live traffic condition"
+      ]
+    },
+    {
+      "slot_id": "scaled_slot_083",
+      "pair_id": "pair_0283",
+      "fixture_id": "test_pair_0283_get_air_quality",
+      "required_answer_facts": [
+        "aqi=58",
+        "category=moderate",
+        "dominant_pollutant=PM2.5"
+      ],
+      "forbidden_answer_claims": [
+        "temperature",
+        "medical diagnosis",
+        "live sensor observation"
+      ]
+    },
+    {
+      "slot_id": "scaled_slot_088",
+      "pair_id": "pair_0288",
+      "fixture_id": "test_pair_0288_convert_currency",
+      "required_answer_facts": [
+        "converted_amount=899.1",
+        "rate=4.86",
+        "rate_snapshot=2026-07-23"
+      ],
+      "forbidden_answer_claims": [
+        "live exchange rate",
+        "transaction completion",
+        "financial advice"
+      ]
+    },
+    {
+      "slot_id": "scaled_slot_090",
+      "pair_id": "pair_0290",
+      "fixture_id": "test_pair_0290_get_air_quality",
+      "required_answer_facts": [
+        "aqi=73",
+        "category=moderate",
+        "dominant_pollutant=PM10"
+      ],
+      "forbidden_answer_claims": [
+        "temperature",
+        "medical diagnosis",
+        "live sensor observation"
+      ]
+    }
+  ],
+  "technical_review": {
+    "reviewer_id": "research_lead_01",
+    "decision": "approve",
+    "decided_at": "2026-07-28T09:10:36+03:00",
+    "all_75_blueprints_approved": true,
+    "all_30_fixtures_approved_as_synthetic_and_deterministic": true,
+    "all_30_answer_contracts_approved": true,
+    "authoring_packets_may_be_unlocked": true,
+    "notes": "Approved as one technical batch; later gates remain closed."
+  },
+  "release_eligible": false,
+  "approval": {
+    "approved_by": "research_lead_01",
+    "approved_role": "principal_investigator",
+    "approved_at": "2026-07-28T09:10:36+03:00",
+    "decision_reference": "data/test/construction/approved_v1/approval_record.json",
+    "contract_count_approved": 30,
+    "currency_display_policy_approved": true
+  }
+}
