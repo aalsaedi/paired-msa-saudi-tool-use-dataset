@@ -13,6 +13,12 @@ Standard Arabic (MSA) and Saudi Arabic.
 - Records SHA-256: `1239ae0cdf24f6343d574c9b04477259650221a1f1bfa932b38c7f139af41e34`
 - License: CC BY 4.0
 
+Version `heldout-v1.0.3` is the confirmed evaluation snapshot used in the
+accompanying study. Its 150 released request texts match the frozen evaluation
+input package exactly; no request text was changed after the evaluated
+snapshot was frozen. The public records are a privacy-minimized representation
+of that same benchmark.
+
 Each scenario has one MSA request and one Saudi Arabic request with the same
 tool environment and expected behavior. The pairs are evenly divided across
 valid calls, confusable tools, missing required arguments, no-tool requests,
